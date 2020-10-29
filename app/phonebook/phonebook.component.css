@@ -1,0 +1,6 @@
+input[type=text]{
+    width:100%;
+    display: inline-flexbox;
+            border: 1px ;
+            box-sizing: border-box;
+}

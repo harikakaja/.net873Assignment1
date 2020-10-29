@@ -1,0 +1,38 @@
+<div class ="container">
+    <h1>Phone Book App</h1>
+    <div class = "jumbotron">
+        <form>
+            FirstName<br/><input  type ="text" id ="fname" name="FirstName" [(ngModel)]="getcontactinfo.FirstName"><br/><br/>
+            LastName<br/> <input type ="text" id ="lname" name="LastName" [(ngModel)]="getcontactinfo.LastName"><br/><br/>
+            PhoneNumber<br/> <input type ="text" id ="pno" name="PhoneNumber" [(ngModel)]="getcontactinfo.PhoneNumber"><br/><br/>
+                <div class="column">
+                    <button class ="btn btn-success form-control btn-block" type ="submit" (click) ="addcontact()">+AddContact</button>
+            <button class ="btn btn-success form-control btn-block" type="submit" (click) ="updatecontact()">Edit Contact Details</button>
+                </div>
+            
+           
+        </form>
+    </div>
+    <hr>
+    <h3>Contacts</h3>
+    <div>
+        <b>Search: </b> <input type="text" placeholder="Enter Name" [(ngModel)]="searchText"><br/>
+        <table class ="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>PhoneNumber</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor ="let c of contactlist| contactfilterpipe : searchText">
+                    <td>{{c.FirstName}}{{c.LastName}}</td>
+                     <td>{{c.PhoneNumber}}</td>
+                <td> <glyphicon  class="glyphicon glyphicon-trash" (click)="deletecontact(c.FirstName)"></glyphicon></td>
+                <td> <glyphicon  class="glyphicon glyphicon-edit" (click)="editcontact(c.FirstName)"></glyphicon></td>
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+</div>
